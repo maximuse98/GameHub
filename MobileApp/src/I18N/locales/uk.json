@@ -1,0 +1,26 @@
+{
+  "createUser": {
+    "usernamePlaceholder": "Iм'я користувача",
+    "submitBtnLabel": "Пiдтвердити"
+  },
+  "gameSelector": {
+    "listItem": {
+      "fields": {
+        "scenario": {
+          "name": "Сценарiй"
+        },
+        "creator": {
+          "name": "Створено"
+        }
+      }
+    }
+  },
+  "createGame": {
+    "gameNameInputPlaceholder": "Назва гри",
+    "submitBtnLabel": "Створити",
+    "listItem": {
+      "nameFieldLabel": "Назва",
+      "playersCountFieldLabel": "Кiлькiсть гравцiв"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "createUser": {
+    "usernamePlaceholder": "Имя пользователя",
+    "submitBtnLabel": "Подтвердить"
+  },
+  "gameSelector": {
+    "listItem": {
+      "fields": {
+        "scenario": {
+          "name": "Сценарий"
+        },
+        "creator": {
+          "name": "Создал"
+        }
+      }
+    }
+  },
+  "createGame": {
+    "gameNameInputPlaceholder": "Название игры",
+    "submitBtnLabel": "Создать",
+    "listItem": {
+      "nameFieldLabel": "Название",
+      "playersCountFieldLabel": "Кол-во игроков"
+    }
+  }
+}

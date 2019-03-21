@@ -1,0 +1,26 @@
+{
+  "createUser": {
+    "usernamePlaceholder": "Username",
+    "submitBtnLabel": "Submit"
+  },
+  "gameSelector": {
+    "listItem": {
+      "fields": {
+        "scenario": {
+          "name": "Scenario"
+        },
+        "creator": {
+          "name": "Created by"
+        }
+      }
+    }
+  },
+  "createGame": {
+    "gameNameInputPlaceholder": "Game name",
+    "submitBtnLabel": "Submit",
+    "listItem": {
+      "nameFieldLabel": "Name",
+      "playersCountFieldLabel": "Players count"
+    }
+  }
+}
