@@ -8,7 +8,9 @@ import { chooseGame } from 'Constants/routes'
 
 import { connectToGame } from 'Redux/actions/game'
 
-function* onGameCreated(action) {
+import 'regenerator-runtime/runtime'
+
+const onGameCreated = function* onGameCreated(action) {
   console.log('onGameCreated', action)
 
   const newGameId = _.get(action, 'payload.data', null)

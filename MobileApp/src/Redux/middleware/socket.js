@@ -30,8 +30,10 @@ const findLocalSocket = async () => {
     promises.push(
       new Promise(resolve => {
         try {
-          const currentTryIp = `${ipBase}.${i}`
-          const currentTryUrl = `http://${currentTryIp}:51309/gamehub`
+          //const currentTryIp = `${ipBase}.${i}`
+		  const currentTryIp = `https://gamehub20190324023554.azurewebsites.net`
+          //const currentTryUrl = `http://${currentTryIp}:51309/gamehub`
+		  const currentTryUrl = `${currentTryIp}/gamehub`
           const currentSocketTry = new HubConnectionBuilder()
             .withUrl(currentTryUrl)
             .build()
@@ -40,7 +42,8 @@ const findLocalSocket = async () => {
             .start()
             .then(() => {
               console.log('FOUND ' + currentTryUrl)
-              socketIp = `http://${currentTryIp}:51309`
+              //socketIp = `http://${currentTryIp}:51309`
+			  socketIp = `${currentTryIp}`
               // currentSocketTry.stop().then(() => {
               //   const responseSocket = new HubConnectionBuilder()
               //     .withUrl(currentTryUrl)

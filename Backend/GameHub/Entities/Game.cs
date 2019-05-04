@@ -18,6 +18,8 @@ namespace GameHub.Entities
 
         public Guid StartSceneId { get; set; }
 
+        public int Iterations { get; set; }
+
         public virtual ICollection<ImageResource> ImageResources { get; set; }
 
         public virtual ICollection<Scene> Scenes { get; set; }

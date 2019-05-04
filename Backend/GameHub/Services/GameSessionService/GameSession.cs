@@ -11,5 +11,6 @@ namespace GameHub.Services.GameSessionService
         public string CreatorUserName { get; set; }
         public int MaxPlayersCount { get; set; }
         public int CurrentPlayersCount { get; set; }
+        public int Iterations { get; set; }
     }
 }

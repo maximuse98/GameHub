@@ -132,6 +132,7 @@ namespace GameHub.Services.GameSessionService
                 MaxPlayersCount = Game.PlayersCount,
                 ScenarioId = Game.Id,
                 ScenarioName = Game.Name,
+                Iterations = Game.Iterations,
                 Name = Name
             };
         }
@@ -146,11 +147,26 @@ namespace GameHub.Services.GameSessionService
                 var userId = userIds[i];
                 var matrixPosition = string.Join('-', i == 0 ? userAnswers.Values : userAnswers.Values.Reverse());
 
-                userSceneIds[userId] = Game.Scenes
+                var matrixPositionA = Game.Scenes
                     .Single(x => x.Id == userSceneIds[userId])
                     .Chooser.ChoiceMatrix
                     .Single(x => x.MatrixPosition == matrixPosition)
-                    .NextSceneId;
+                    .ValueA;
+                var matrixPositionB = Game.Scenes
+                    .Single(x => x.Id == userSceneIds[userId])
+                    .Chooser.ChoiceMatrix
+                    .Single(x => x.MatrixPosition == matrixPosition)
+                    .ValueB;
+
+                //userSceneIds[userId] = Game.Scenes
+                //    .Single(x => x.Id == userSceneIds[userId])
+                //    .Chooser.ChoiceMatrix
+                //    .Single(x => x.MatrixPosition == matrixPosition)
+                //    .NextSceneId;
+
+                userSceneIds[userId] = Game.Scenes
+                    .Single(x => (x.WinA == matrixPositionA) && (x.WinB == matrixPositionB))
+                    .Id;
             }
 
             userAnswers.Clear();

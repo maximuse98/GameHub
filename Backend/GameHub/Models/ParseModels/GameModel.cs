@@ -10,6 +10,8 @@ namespace GameHub.Models.ParseModels
 
         public int StartSceneId { get; set; }
 
+        public int Iterations { get; set; }
+
         public IEnumerable<ImageResourceModel> ImageResources { get; set; }
 
         public IEnumerable<SceneModel> Scenes { get; set; }

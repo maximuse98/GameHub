@@ -8,7 +8,7 @@ import { game as gameRoute } from 'Constants/routes'
 
 import { setWaitingForPlayersState } from 'Redux/actions/common'
 
-function* onConnectToGameSuccess(action) {
+const onConnectToGameSuccess = function* onConnectToGameSuccess(action) {
   console.log('onConnectToGameSuccess', action)
 
   const gameData = _.get(action, 'payload.data', null)

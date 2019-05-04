@@ -4,7 +4,7 @@ import { put } from 'redux-saga/effects'
 
 import { setWaitingForPlayersState } from 'Redux/actions/common'
 
-function* onSendAnswerSuccess(action) {
+const onSendAnswerSuccess = function* onSendAnswerSuccess(action) {
   console.log('onSendAnswerSuccess', action)
 
   const gameData = _.get(action, 'payload.data', null)

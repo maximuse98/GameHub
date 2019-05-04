@@ -23,5 +23,9 @@ namespace GameHub.Models.ParseModels
         public SceneTypeModel Type { get; set; }
 
         public bool WaitForOthers { get; set; }
+
+        public int? WinA { get; set; }
+
+        public int? WinB { get; set; }
     }
 }

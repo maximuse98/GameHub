@@ -6,7 +6,7 @@ import { setWaitingForPlayersState } from 'Redux/actions/common'
 
 import { getActiveGame } from 'Redux/selectors/game'
 
-function* onPlayerConnected(action) {
+const onPlayerConnected = function* onPlayerConnected(action) {
   console.log('onPlayerConnected', action)
 
   const nextPlayersCount = _.get(action, 'payload.data', null)

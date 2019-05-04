@@ -1,3 +1,5 @@
+import {Fragment} from 'react-native'
+
 import React, { Component } from 'react'
 
 import { TouchableWithoutFeedback } from 'react-native'
@@ -98,14 +100,14 @@ class ResultScene extends Component {
     if (!currentPhrase) return null
 
     return (
-      <>
+      <Fragment>
         <DialogBox>
           <Text>{currentPhrase.text}</Text>
         </DialogBox>
         <ActorNameContainer>
           <Text numberOfLines={1}>{currentPhrase.actorName}</Text>
         </ActorNameContainer>
-      </>
+      </Fragment>
     )
   }
 

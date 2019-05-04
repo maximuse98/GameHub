@@ -56,6 +56,7 @@ namespace GameHub.Services
                 Name = gameModel.Name,
                 PlayersCount = gameModel.PlayersCount,
                 StartSceneId = sceneIdsMapper[gameModel.StartSceneId],
+                Iterations = gameModel.Iterations,
                 ImageResources = gameModel.ImageResources.Select(x => new ImageResource
                 {
                     Id = resourceIdsMapper[x.Id],
@@ -67,7 +68,9 @@ namespace GameHub.Services
                     BackgroundId = resourceIdsMapper[x.BackgroundId],
                     Type = x.Type == SceneTypeModel.Normal ? SceneType.Normal : SceneType.Result,
                     Text = x.Text,
-                    WaitForOthers = x.WaitForOthers,
+                    WinA = x.Type == SceneTypeModel.Result ? x.WinA : null,
+                    WinB = x.Type == SceneTypeModel.Result ? x.WinB : null,
+                    WaitForOthers = x.WaitForOthers,                  
                     Sprites = x.Sprites?.Select(z => new Sprite
                     {
                         ResourceId = resourceIdsMapper[z.ResourceId],
@@ -84,8 +87,9 @@ namespace GameHub.Services
                         ChoiceMatrix = x.Chooser?.ChoiceMatrix?.Select(z => new MatrixVariant
                         {
                             MatrixPosition = z.MatrixPosition,
-                            NextSceneId = sceneIdsMapper[z.NextSceneId],
-                            Value = z.Value
+                            //NextSceneId = sceneIdsMapper[z.NextSceneId],
+                            ValueA = z.ValueA,
+                            ValueB = z.ValueB
                         })?.ToArray() ?? new MatrixVariant[0]
                     }
                 }).ToArray()

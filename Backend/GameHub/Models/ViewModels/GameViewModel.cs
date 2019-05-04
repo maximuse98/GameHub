@@ -12,5 +12,6 @@ namespace GameHub.Models.ViewModels
         public int PlayersCount { get; set; }
         public int CurrentPlayersCount { get; set; }
         public SceneViewModel StartScene { get; set; }
+        public int Iterations { get; set; }
     }
 }
