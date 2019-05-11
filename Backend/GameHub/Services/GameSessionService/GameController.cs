@@ -36,6 +36,11 @@ namespace GameHub.Services.GameSessionService
         public Game Game { get; }
 
         /// <summary>
+        /// Показывает, сколько раз игроки ходят
+        /// </summary>
+        public int Iterations { get; }
+
+        /// <summary>
         /// Количество игроков, присоединившихся к игре
         /// </summary>
         public int CurrentPlayersCount => userIds.Count;
@@ -48,7 +53,7 @@ namespace GameHub.Services.GameSessionService
         /// <summary>
         /// Показывает, все ли игроки сделали выбор в текущем разветвлении сюжета
         /// </summary>
-        public bool AllPlayersAnswered => CurrentPlayersCount == AnsweredCount;
+        public bool AllPlayersAnswered => Game.PlayersCount == AnsweredCount;
         
         /// <summary>
         /// Показывает, достаточно ли игроков присоединилось к игре для начала игры
@@ -67,6 +72,7 @@ namespace GameHub.Services.GameSessionService
             Game = game;
             CreatorUserName = userName;
             Name = name;
+            Iterations = game.Iterations;
             userIds = new List<string>(game.PlayersCount);
             userAnswers = new Dictionary<string, int>(game.PlayersCount);
             userSceneIds = new Dictionary<string, Guid>(game.PlayersCount);
@@ -168,6 +174,26 @@ namespace GameHub.Services.GameSessionService
                     .Single(x => (x.WinA == matrixPositionA) && (x.WinB == matrixPositionB))
                     .Id;
             }
+
+            //var matrixPosition = string.Join('-', userAnswers.Values);
+
+            //var matrixPositionA = Game.Scenes
+            //    .Single(x => x.Id == userSceneIds[userIds[0]])
+            //    .Chooser.ChoiceMatrix
+            //    .Single(x => x.MatrixPosition == matrixPosition)
+            //    .ValueA;
+            //var matrixPositionB = Game.Scenes
+            //    .Single(x => x.Id == userSceneIds[userIds[1]])
+            //    .Chooser.ChoiceMatrix
+            //    .Single(x => x.MatrixPosition == matrixPosition)
+            //    .ValueB;
+
+            //userSceneIds[userIds[0]] = Game.Scenes
+            //        .Single(x => (x.Type == GameHub.Entities.SceneType.Result) && (x.WinA == matrixPositionA) && (x.WinB == matrixPositionB))
+            //        .Id;
+            //userSceneIds[userIds[1]] = Game.Scenes
+            //        .Single(x => (x.Type == GameHub.Entities.SceneType.Result) && (x.WinA == matrixPositionA) && (x.WinB == matrixPositionB))
+            //        .Id;
 
             userAnswers.Clear();
         }

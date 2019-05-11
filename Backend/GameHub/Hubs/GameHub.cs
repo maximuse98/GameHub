@@ -135,6 +135,15 @@ namespace GameHub.Hubs
             await Clients.Caller.SendAsync(nameof(CreateGame), RequestResult.Ok(gameSession.Id));
             await Clients.All.SendAsync("GameCreated", RequestResult.Ok(gameSession));
         }
+        public async Task CreateGame1()
+        {
+            var game = gameService.FindById(new Guid("e8df6c63 - 84d7 - 46c6 - 4652 - 08d6d3d449c9"));
+            var userName = (string)Context.Items[CLIENT_USERNAME_FIELD];
+            var gameSession = gameSessionService.Create(game, userName, "Битва полов");
+
+            await Clients.Caller.SendAsync(nameof(CreateGame), RequestResult.Ok(gameSession.Id));
+            await Clients.All.SendAsync("GameCreated", RequestResult.Ok(gameSession));
+        }
 
         /// <summary>
         /// Подключиться к игре
@@ -196,6 +205,11 @@ namespace GameHub.Hubs
                     await Clients.Client(playerData.Key).SendAsync(nameof(SendAnswer), RequestResult.Ok(sceneModel));
                 }
             }
+        }
+
+        public async Task Send(string message)
+        {
+            await this.Clients.All.SendAsync("Send", message);
         }
     }
 }
