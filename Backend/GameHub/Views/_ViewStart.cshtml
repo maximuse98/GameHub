@@ -1,3 +1,98 @@
 ﻿@{
     Layout = "_Layout";
 }
+
+<!--<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>SignalR Chat</title>
+</head>
+<body>
+    <div id="inputForm">
+        <input type="text" id="message" value="maximuse98" />
+        <input type="button" id="sendBtn" value="Авторизоваться" />
+        <input type="button" id="createBtn1" value="Создать игру 1" />
+        <input type="button" id="createBtn2" value="Создать игру 2" />
+        <br />
+        <input type="text" id="connectId" />
+        <input type="button" id="connectBtn" value="Подключиться" />
+    </div>
+    <div class="results" id="res">
+        Вы вошли как:
+        <div id="playerName"></div>
+        Id игры:
+        <div id="gameId"></div>
+        Игра:
+        <div id="game"></div>
+    </div>
+    <div id="choiseForm" >
+        <input type="text" id="choise" value="1"/>
+        <input type="button" id="sendChoiseBtn" value="Отправить ответ"/>
+    </div>
+    <div id="result"/>
+
+    <script src="js/signalr.min.js"></script>
+    <script>
+        let hubUrl = 'http://localhost:51309/gamehub';
+
+        const hubConnection = new signalR.HubConnectionBuilder()
+            .withUrl(hubUrl)
+            //.withTransport(Microsoft.AspNetCore.Sockets.TransportType.WebSockets)
+            .configureLogging(signalR.LogLevel.Information)
+            .build();
+
+        //добавление функций - результатов выполнения методов на стороне сервера
+        hubConnection.on("Authorization", function (data) {
+            let elem = document.createElement("p");
+            elem.appendChild(document.createTextNode(JSON.stringify(data)));
+            let firstElem = document.getElementById("playerName").firstChild;
+            document.getElementById("playerName").innerHTML = JSON.stringify(data.data);
+            //document.getElementById("players").insertBefore(elem, firstElem);
+        });
+        hubConnection.on("CreateGame", function (data) {
+            //document.querySelector('.results').innerHTML = JSON.stringify(data.data);
+            let content = JSON.stringify(data.data);
+            document.getElementById("gameId").innerHTML = content;
+            document.getElementById("connectId").value = content.substr(1).slice(0, -1);
+        });
+        hubConnection.on("ConnectToGame", function (data) {
+            document.getElementById("game").innerHTML = JSON.stringify(data.data);
+        });
+        hubConnection.on("SendAnswer", function (data) {
+            document.getElementById("result").innerHTML = JSON.stringify(data.data);
+        });
+
+        //добавление действия на кнопки
+        document.getElementById("sendBtn").addEventListener("click", function (e) {
+            let message = document.getElementById("message").value;
+            hubConnection.invoke("Authorization", message);
+        });
+        document.getElementById("createBtn1").addEventListener("click", function (e) {
+            var game = {
+                name: 'Дилемма заключенных', //это просто название игры
+                scenarioid: 'fc5b7678-a00b-4c31-b579-08d6dd579a2e' //это id игры из бд
+            };
+            hubConnection.invoke("CreateGame", game);
+        });
+        document.getElementById("createBtn2").addEventListener("click", function (e) {
+            var game = {
+                name: 'Семейная ссора', //это просто название игры
+                scenarioid: '1ff54938-afdf-44e1-4806-08d6ddfcd196' //это id игры из бд
+            };
+            hubConnection.invoke("CreateGame", game);
+        });
+        document.getElementById("connectBtn").addEventListener("click", function (e) {
+            var gameId = document.getElementById("connectId").value;
+            //var gameId = gameId1.substr(1).slice(0, -1); //убрать "" в начале и в конце
+            hubConnection.invoke("ConnectToGame", gameId);
+        });
+        document.getElementById("sendChoiseBtn").addEventListener("click", function (e) {
+            var choiseNum = document.getElementById("choise").value;
+            hubConnection.invoke("SendAnswer", choiseNum);
+        });
+
+        hubConnection.start();
+    </script>
+</body>
+</html>-->

@@ -92,7 +92,7 @@ namespace GameHub.Hubs
         public async Task Authorization(string userName)
         {
             Context.Items[CLIENT_USERNAME_FIELD] = userName;
-            await Clients.Caller.SendAsync(nameof(Authorization), RequestResult.Ok(userName));
+            await Clients.All.SendAsync(nameof(Authorization), RequestResult.Ok(userName));
         }
 
         /// <summary>
